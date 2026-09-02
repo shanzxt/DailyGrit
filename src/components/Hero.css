@@ -47,7 +47,22 @@
 .hero-line { display: block; overflow: visible; padding-block: 0.08em; }
 .hero-word { display: inline-block; overflow: hidden; margin-right: 0.24em; }
 .hero-word > span { display: inline-block; will-change: transform; }
-.hero-word-accent > span { color: var(--accent); }
+
+/* Gradient runs through the accent words themselves — pale at the start,
+   full accent by the end. The plain colour is a fallback for browsers
+   without background-clip:text. */
+.hero-word-accent > span {
+  color: var(--accent);
+  background-image: linear-gradient(
+    100deg,
+    color-mix(in srgb, var(--accent) 45%, var(--fg)) 0%,
+    var(--accent) 60%,
+    color-mix(in srgb, var(--accent) 78%, #b06cf0) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .hero-lede {
   font-size: var(--t-lg);
@@ -97,20 +112,28 @@
 
 .hero-ctas { justify-content: center; }
 
-.btn-amber {
+/* Doubled class (.btn.btn-x) so these beat the base .btn rule in
+   global.css, which loads after this file and would otherwise win. */
+.btn.btn-amber {
   background: var(--amber);
   color: #1a1206;
   border-color: transparent;
   font-weight: 700;
 }
-.btn-amber:hover { background: color-mix(in srgb, var(--amber) 85%, black); }
+.btn.btn-amber:hover {
+  background: color-mix(in srgb, var(--amber) 85%, black);
+  border-color: transparent;
+}
 
-.btn-light {
+.btn.btn-light {
   background: var(--fg);
   color: var(--bg);
   border-color: transparent;
 }
-.btn-light:hover { background: color-mix(in srgb, var(--fg) 88%, transparent); }
+.btn.btn-light:hover {
+  background: color-mix(in srgb, var(--fg) 85%, var(--accent));
+  border-color: transparent;
+}
 
 .hero-facts {
   display: grid;
