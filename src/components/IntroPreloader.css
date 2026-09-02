@@ -1,0 +1,52 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-content: center;
+  gap: 1.1rem;
+  justify-items: center;
+  pointer-events: none;
+}
+
+/* four quadrant panels that together cover the viewport */
+.intro-panel {
+  position: absolute;
+  width: 50.4vw;
+  height: 50.4vh;
+  background: var(--bg-deep);
+  will-change: transform;
+}
+.intro-panel-tl { top: 0; left: 0; }
+.intro-panel-tr { top: 0; right: 0; }
+.intro-panel-bl { bottom: 0; left: 0; }
+.intro-panel-br { bottom: 0; right: 0; }
+
+.intro-word {
+  position: relative;
+  display: flex;
+  gap: 0.02em;
+  overflow: hidden;
+  padding-block: 0.12em;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.4rem, 11vw, 8rem);
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+  color: var(--fg);
+}
+
+.intro-letter {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* the G — where "daily" meets "grit" */
+.intro-letter-pivot { color: var(--accent); }
+
+.intro-sub {
+  position: relative;
+  margin: 0;
+  color: var(--fg-faint);
+  font-size: var(--t-xs);
+}

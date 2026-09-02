@@ -1,0 +1,36 @@
+.marq {
+  border-block: 1px solid var(--line);
+  overflow: hidden;
+  padding-block: 0.9rem;
+  background: var(--bg-deep);
+  position: relative;
+  z-index: 1;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marq-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marq-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding-right: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.marq-dot {
+  font-size: 0.85em;
+  color: var(--fg-faint);
+}
+.marq-dot::before { content: "\2726"; }

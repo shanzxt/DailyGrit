@@ -1,0 +1,108 @@
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.work-slot { display: flex; }
+
+.work {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-l);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.work-head { display: flex; justify-content: space-between; gap: 1rem; }
+
+.work-name {
+  font-size: var(--t-xl);
+  letter-spacing: -0.035em;
+}
+
+.work-summary { color: var(--fg-soft); font-size: var(--t-sm); line-height: 1.55; }
+
+.work-stats {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0.35rem 0 auto;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+.work-stats > div { display: flex; justify-content: space-between; gap: 1rem; }
+.work-stats dt { font-size: var(--t-xs); color: var(--fg-faint); }
+.work-stats dd { margin: 0; font-size: var(--t-xs); }
+
+.work-foot {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+}
+
+.work-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: var(--t-sm);
+  color: var(--fg-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+.work-live:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* cursor spotlight — a soft accent glow that follows the pointer */
+.work { position: relative; overflow: hidden; }
+.work-spot {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), var(--accent-soft), transparent 70%);
+  transition: opacity 0.35s var(--ease-out);
+}
+.work:hover .work-spot { opacity: 1; }
+
+/* mock browser window on each card, capped with a caption label */
+.work-mock {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem 1.1rem;
+  background: var(--bg-deep);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+}
+.work-mock-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--line);
+  display: inline-block;
+  margin-right: 0.3rem;
+}
+.work-mock-bar {
+  display: block;
+  height: 7px;
+  border-radius: 100px;
+  background: var(--line);
+}
+.work-mock-bar-accent { background: var(--accent); margin-top: 0.35rem; }
+
+.work-caption { margin: 0; }
+
+.work-kind {
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
