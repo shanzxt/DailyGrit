@@ -46,7 +46,7 @@
 }
 .hero-line { display: block; overflow: visible; padding-block: 0.08em; }
 .hero-word { display: inline-block; overflow: visible; margin-right: 0.24em; }
-.hero-word > span { display: inline-block; line-height: 1.15; will-change: transform; }
+.hero-word > span { display: inline-block; line-height: 0.9; will-change: transform; }
 
 /* Gradient runs through the accent words themselves — pale at the start,
    full accent by the end. The plain colour is a fallback for browsers
