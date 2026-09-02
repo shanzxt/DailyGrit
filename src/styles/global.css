@@ -4,7 +4,7 @@
    ============================================================ */
 
 :root {
-  --font-display: "Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif;
+  --font-display: "Inter", "Instrument Sans", system-ui, sans-serif;
   --font-body: "Instrument Sans", system-ui, -apple-system, sans-serif;
   --font-mono: "DM Mono", ui-monospace, "SF Mono", monospace;
 

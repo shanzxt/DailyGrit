@@ -5,15 +5,21 @@ import { useStudio } from "../context/studio.js";
 import Magnetic from "./Magnetic.jsx";
 import "./Hero.css";
 
-const LINE_1 = ["We", "design", "it,"];
-const LINE_2 = ["then", "we", "build", "it."];
+/* Each line is its own array of { text, accent } so "digital products"
+   can be coloured while the rest of the line stays white. */
+const LINES = [
+  [{ text: "We" }, { text: "design" }, { text: "&" }, { text: "build" }],
+  [{ text: "standout" }, { text: "digital", accent: true }, { text: "products", accent: true }],
+  [{ text: "for" }, { text: "ambitious" }, { text: "brands." }],
+];
+
 const SPRING = { type: "spring", stiffness: 110, damping: 19, mass: 0.9 };
 
 const FACTS = [
-  { k: "Studio size", v: "Two people" },
-  { k: "First page live", v: "7 days" },
-  { k: "Based in", v: "Pune, IST" },
-  { k: "Handover", v: "You own everything" },
+  { value: "2-4 Wks", label: "Fast Turnaround" },
+  { value: "100%", label: "IP & Code Ownership" },
+  { value: "Fixed", label: "Upfront Pricing" },
+  { value: "Direct", label: "Founder Collaboration" },
 ];
 
 export default function Hero() {
@@ -29,17 +35,21 @@ export default function Hero() {
     document.getElementById("contact")?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
   };
 
-  const word = (w, i, offset = 0) => (
-    <span key={`${w}-${i}`} className="hero-word">
-      <motion.span
-        initial={{ y: "108%", rotate: 3 }}
-        animate={{ y: "0%", rotate: 0 }}
-        transition={{ ...SPRING, delay: 0.25 + (i + offset) * 0.07 }}
-      >
-        {w}
-      </motion.span>
-    </span>
-  );
+  let wordIndex = 0;
+  const word = ({ text, accent }) => {
+    const delay = 0.2 + wordIndex++ * 0.06;
+    return (
+      <span key={text} className={accent ? "hero-word hero-word-accent" : "hero-word"}>
+        <motion.span
+          initial={{ y: "108%", rotate: 3 }}
+          animate={{ y: "0%", rotate: 0 }}
+          transition={{ ...SPRING, delay }}
+        >
+          {text}
+        </motion.span>
+      </span>
+    );
+  };
 
   return (
     <section className="hero" id="top">
@@ -51,12 +61,15 @@ export default function Hero() {
           transition={{ delay: 0.15, ...SPRING }}
         >
           <span className="hero-pill-dot" aria-hidden="true" />
-          Launch offer — 2 slots open at launch rates
+          Launch Offer: 2 Slots Open @ Launch Rates (Nov 30 Deadline)
         </motion.p>
 
         <h1 className="hero-head">
-          <span className="hero-line">{LINE_1.map((w, i) => word(w, i))}</span>
-          <span className="hero-line hero-line-alt">{LINE_2.map((w, i) => word(w, i, LINE_1.length))}</span>
+          {LINES.map((line, li) => (
+            <span className="hero-line" key={li}>
+              {line.map((w) => word(w))}
+            </span>
+          ))}
         </h1>
 
         <motion.p
@@ -65,8 +78,9 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, ...SPRING }}
         >
-          DailyGrit is a two-person studio in Pune. Aastha designs it, Shan builds it, and you get
-          a site you own outright — not a template with your logo dropped in.
+          A boutique two-person studio in Pune. One design partner leading creative direction & UI,
+          one engineering partner leading architecture & delivery. Zero middlemen. Guaranteed
+          timelines.
         </motion.p>
 
         <motion.form
@@ -97,7 +111,7 @@ export default function Hero() {
           </div>
           <Magnetic strength={0.2}>
             <button type="submit" className="btn btn-amber">
-              Claim free teardown
+              Claim Free Teardown
               <ArrowRight size={16} aria-hidden="true" />
             </button>
           </Magnetic>
@@ -111,13 +125,13 @@ export default function Hero() {
         >
           <Magnetic strength={0.2}>
             <a className="btn btn-light" href="#work">
-              Explore selected work
+              Explore Selected Work
               <ArrowRight size={16} aria-hidden="true" />
             </a>
           </Magnetic>
           <Magnetic strength={0.2}>
             <a className="btn" href="#pricing">
-              View pricing ladder
+              View Pricing Ladder
             </a>
           </Magnetic>
         </motion.div>
@@ -125,13 +139,13 @@ export default function Hero() {
         <motion.dl className="hero-facts" style={reduced ? undefined : { opacity: fade, y: drift }}>
           {FACTS.map((f, i) => (
             <motion.div
-              key={f.k}
+              key={f.value}
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.15 + i * 0.07, ...SPRING }}
             >
-              <dt className="mono">{f.k}</dt>
-              <dd>{f.v}</dd>
+              <dd>{f.value}</dd>
+              <dt className="mono">{f.label}</dt>
             </motion.div>
           ))}
         </motion.dl>

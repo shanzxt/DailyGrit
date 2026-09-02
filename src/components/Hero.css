@@ -41,9 +41,9 @@
   text-align: center;
 }
 .hero-line { display: block; overflow: hidden; padding-block: 0.04em; }
-.hero-line-alt { color: var(--accent); }
 .hero-word { display: inline-block; overflow: hidden; margin-right: 0.24em; }
 .hero-word > span { display: inline-block; will-change: transform; }
+.hero-word-accent > span { color: var(--accent); }
 
 .hero-lede {
   font-size: var(--t-lg);
@@ -124,9 +124,9 @@
   padding: 1.1rem 1.2rem;
   text-align: center;
 }
-.hero-facts dt { font-size: var(--t-xs); color: var(--fg-faint); }
+.hero-facts dt { font-size: var(--t-xs); color: var(--fg-faint); margin-top: 0.35rem; }
 .hero-facts dd {
-  margin: 0.35rem 0 0;
+  margin: 0;
   font-family: var(--font-display);
   font-size: var(--t-lg);
   letter-spacing: -0.02em;
