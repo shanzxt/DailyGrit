@@ -44,6 +44,10 @@
   max-width: 17ch;
   text-align: center;
 }
+.hero-head span {
+  display: inline-block;
+  line-height: 1;
+}
 .hero-line { display: block; overflow: visible; padding-block: 0.08em; }
 .hero-word { display: inline-block; overflow: hidden; margin-right: 0.24em; }
 .hero-word > span { display: inline-block; will-change: transform; }
